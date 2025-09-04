@@ -1,0 +1,323 @@
+==================================================
+Ubuntu Notes
+==================================================
+This was needed to get what was already working on windows, working in linux.
+Instead of WindowsNoEditor, use (doubleclick in gnome ) "Link to CarlaUE4-Linux-Shipping" in Carla_0.9.15 folder, which should open the same interface as WindowsNoEditor does.
+
+
+The following commands create a conda environment that handles the installation requirements that the requirements.txt won't handle.
+
+conda create -n <your environment name> python=3.7
+conda activate <your environment name>
+pip3 install carla
+pip3 install numpy
+
+This will allow you to run python scripts as can be found in Myscripts and Carla_0.9.15/PythonAPI/examples
+
+
+• Generate Traffic
+in /media/labuser/Data/Myscripts$ "python gen_traffic.py -n 150 -w 70 --seconds 60"
+	Capable of screen recording, if the option is enabled
+	
+	In Carla_0.9.15/PythonAPI/examples: "python generate_traffic.py"
+• Generate Data
+  in /media/labuser/Data/Myscripts$ python replay_with_sensors.py -o <output folder> -cfg <config ini file> [-skip <x>]"
+   For example, $python replay_with_sensors.py -cfg /media/labuser/Data/Myscripts/configparams/T1_1.ini -o "T1_1" 
+            ▪ -o is output folder name
+            ▪ -skip 44 can be used to skip, for example, 44 spacing instances. Useful when the simulator crashes midway through.
+• Inference
+        ◦ /media/labuser/Data/HEAL$ 
+            ▪ python opencood/tools/inference.py --model_dir opencood/MyModel/HeterBaseline_opv2v_lidar_fcooper_2023_08_06_19_53_10/ --fusion_method intermediate --save_vis_interval 5 --test
+                • HeterBaseline_opv2v_lidar_attfuse_2023_08_06_19_58_00
+• Autoinference
+        ◦ /media/labuser/Data/Myscripts$
+            ▪ python autoinfer.py -fcooper -disco -attfuse -cobevt -test "output/T1_4"
+
+    • Gif-making
+        ◦ convert $(for ((a=0; a<995; a+=5)); do printf -- "-delay 30 bev_00%s.png " $a; done; ) result.gif
+        ◦ gifsicle --delay=15 --loop [5-8]00feb5.gif > anim.gif
+==================================================
+Windows Notes
+==================================================
+Linux and Windows require separate forms of directory specifications
+
+to launch unreal editor: 
+launch x64 native tools command prompt
+navigate to "E:\carla", then "make launch"
+
+buildeditor.bat will do this.
+==================================================
+To run only the carla server in a window: runcarla.bat, or run CarlaUE4 in the WindowsNoEditor Folder
+This version of carla only acts as a server side for your scripts to run on.
+If you need a custom map or object, you'll likely need to use the editor.
+==================================================
+To run traffic:
+1a) 	Standalone carla server: launch the server
+1b) 	Editor: press play
+2) 	In separate command prompt run "python WindowsNoEditor\PythonAPI\examples\generate_traffic.py -n 100 -w 20"
+The arguments make it spawn 100 vehicles and 20 pedestrians.
+=========================RECORDING=========================
+To generate a traffic scene with 150 walkers, 200 vehicles, which will run for 200 frames:
+In command prompt, run "python Myscripts/gen_traffic.py -w 150 -n 200 --frames 200"
+This will output a log file in 'scenes' that you can use to play back the vehicle behaviour
+The spectator camera is included in this, make sure you put the camera somewhere you don't mind looking at before you trigger the script.
+Longer recordings are prone to traffic jams, particularly with more walkers.
+
+=======================RECORDED DATA=======================
+On my windows machine (Nvidia 2070, Amd Ryzen 3900):
+A 10 minute recording in Town10 with 155 vehicles and 158 walkers took 20 minutes to record, and the log file generated was 217MB.
+A 10 minute recording in Town10 with 99 vehicles and 79 walkers took 15 minutes to record, with a 125MB log file.
+A 10 minute recording in Town10 with 80 vehicles and 16 walkers took 8 minutes to record, with a 69MB log file.
+Each vehicle generates ~0.75MB per 10 minutes
+Each walker  generates ~0.64MB per 10 minutes
+
+Time taken to record will depend on the system you use, but hopefully this gives an idea regarding the orders of magnitude involved.
+
+=========================PLAYBACK==========================
+Use Lidar_cam_custom
+Playback:
+        duration=2
+        startTime=1 #usually takes 10 frames for things to land on the ground properly
+        client.replay_file("E:\Myscripts\Scenes\TrafficScene09_27_1451.log",startTime,duration,0)
+The above will play a recorded scene for 2 seconds, beginning at 1 second into the recording.
+A recorded scene consists of, for each frame, a list of each actor and their attributes: including position, orientation, and momentum for each actor.
+
+python /<dir>/lidar_cam_custom.py -
+
+
+
+
+
+
+
+
+
+
+
+
+
+==================================================
+Measurements: 
+in python, distance units are in meters and degrees
+in unreal editor, distance units are in millimeters and degrees
+unreal/100=python
+
+
+
+
+
+List of all blueprint id available without editor shenanigans
+
+===============Misc===============
+controller.ai.walker
+
+===============Sensors===============
+sensor.camera.depth
+sensor.camera.dvs
+sensor.camera.instance_segmentation
+sensor.camera.normals
+sensor.camera.optical_flow
+sensor.camera.rgb
+sensor.camera.semantic_segmentation
+
+sensor.lidar.ray_cast
+sensor.lidar.ray_cast_semantic
+
+sensor.other.collision
+sensor.other.gnss
+sensor.other.imu
+sensor.other.lane_invasion
+sensor.other.obstacle
+sensor.other.radar
+sensor.other.rss
+===============Static===============
+static.prop.advertisement
+static.prop.atm
+static.prop.barbeque
+static.prop.barrel
+static.prop.bench01
+static.prop.bench02
+static.prop.bench03
+static.prop.bike helmet
+static.prop.bin
+static.prop.box01
+static.prop.box02
+static.prop.box03
+static.prop.briefcase
+static.prop.brokentile01
+static.prop.brokentile02
+static.prop.brokentile03
+static.prop.brokentile04
+static.prop.busstop
+static.prop.busstoplb
+static.prop.calibrator
+static.prop.chainbarrier
+static.prop.chainbarrierend
+static.prop.clothcontainer
+static.prop.clothesline
+static.prop.colacan
+static.prop.constructioncone
+static.prop.container
+static.prop.creasedbox01
+static.prop.creasedbox02
+static.prop.creasedbox03
+static.prop.dirtdebris01
+static.prop.dirtdebris02
+static.prop.dirtdebris03
+static.prop.doghouse
+static.prop.foodcart
+static.prop.fountain
+static.prop.garbage01
+static.prop.garbage02
+static.prop.garbage03
+static.prop.garbage04
+static.prop.garbage05
+static.prop.garbage06
+static.prop.gardenlamp
+static.prop.glasscontainer
+static.prop.gnome
+static.prop.guitarcase
+static.prop.haybale
+static.prop.haybalelb
+static.prop.ironplank
+static.prop.kiosk_01
+static.prop.mailbox
+static.prop.maptable
+static.prop.mesh
+static.prop.mobile
+static.prop.motorhelmet
+static.prop.pergola
+static.prop.plantpot01
+static.prop.plantpot02
+static.prop.plantpot03
+static.prop.plantpot04
+static.prop.plantpot05
+static.prop.plantpot06
+static.prop.plantpot07
+static.prop.plantpot08
+static.prop.plasticbag
+static.prop.plasticchair
+static.prop.plastictable
+static.prop.platformgarbage01
+static.prop.purse
+static.prop.shoppingbag
+static.prop.shoppingcart
+static.prop.shoppingtrolley
+static.prop.slide
+static.prop.streetbarrier
+static.prop.streetfountain
+static.prop.streetsign
+static.prop.streetsign01
+static.prop.streetsign04
+static.prop.swing
+static.prop.swingcouch
+static.prop.table
+static.prop.trafficcone01
+static.prop.trafficcone02
+static.prop.trafficwarning
+static.prop.trampoline
+static.prop.trashbag
+static.prop.trashcan01
+static.prop.trashcan02
+static.prop.trashcan03
+static.prop.trashcan04
+static.prop.trashcan05
+static.prop.travelcase
+static.prop.vendingmachine
+static.prop.warningaccident
+static.prop.warningconstruction
+static.prop.wateringcan
+static.trigger.friction
+
+===============Vehicle===============
+vehicle.audi.a2
+vehicle.audi.etron
+vehicle.audi.tt
+vehicle.bh.crossbike
+vehicle.bmw.grandtourer
+vehicle.carlamotors.carlacola
+vehicle.carlamotors.firetruck
+vehicle.chevrolet.impala
+vehicle.citroen.c3
+vehicle.diamondback.century
+vehicle.dodge.charger_2020
+vehicle.dodge.charger_police
+vehicle.dodge.charger_police_2020
+vehicle.ford.ambulance
+vehicle.ford.crown
+vehicle.ford.mustang
+vehicle.gazelle.omafiets
+vehicle.harley-davidson.low_rider
+vehicle.jeep.wrangler_rubicon
+vehicle.kawasaki.ninja
+vehicle.lincoln.mkz_2017
+vehicle.lincoln.mkz_2020
+vehicle.mercedes.coupe
+vehicle.mercedes.coupe_2020
+vehicle.mercedes.sprinter
+vehicle.micro.microlino
+vehicle.mini.cooper_s
+vehicle.mini.cooper_s_2021
+vehicle.mitsubishi.fusorosa
+vehicle.nissan.micra
+vehicle.nissan.patrol
+vehicle.nissan.patrol_2021
+vehicle.seat.leon
+vehicle.tesla.cybertruck
+vehicle.tesla.model3
+vehicle.toyota.prius
+vehicle.vespa.zx125
+vehicle.volkswagen.t2
+vehicle.volkswagen.t2_2021
+vehicle.yamaha.yzf
+
+===============Walker===============
+walker.pedestrian.0001
+walker.pedestrian.0002
+walker.pedestrian.0003
+walker.pedestrian.0004
+walker.pedestrian.0005
+walker.pedestrian.0006
+walker.pedestrian.0007
+walker.pedestrian.0008
+walker.pedestrian.0009
+walker.pedestrian.0010
+walker.pedestrian.0011
+walker.pedestrian.0012
+walker.pedestrian.0013
+walker.pedestrian.0014
+walker.pedestrian.0015
+walker.pedestrian.0016
+walker.pedestrian.0017
+walker.pedestrian.0018
+walker.pedestrian.0019
+walker.pedestrian.0020
+walker.pedestrian.0021
+walker.pedestrian.0022
+walker.pedestrian.0023
+walker.pedestrian.0024
+walker.pedestrian.0025
+walker.pedestrian.0026
+walker.pedestrian.0027
+walker.pedestrian.0028
+walker.pedestrian.0029
+walker.pedestrian.0030
+walker.pedestrian.0031
+walker.pedestrian.0032
+walker.pedestrian.0033
+walker.pedestrian.0034
+walker.pedestrian.0035
+walker.pedestrian.0036
+walker.pedestrian.0037
+walker.pedestrian.0038
+walker.pedestrian.0039
+walker.pedestrian.0040
+walker.pedestrian.0041
+walker.pedestrian.0042
+walker.pedestrian.0043
+walker.pedestrian.0044
+walker.pedestrian.0045
+walker.pedestrian.0046
+walker.pedestrian.0047
+walker.pedestrian.0048
+walker.pedestrian.0049

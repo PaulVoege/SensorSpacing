@@ -1,0 +1,37 @@
+base:
+  location:
+    - 114
+    - 20
+    - 0
+  rotation:
+    - 0.0
+    - 180
+    - 0
+increment:
+  location:
+    - 0
+    - 1
+    - 0
+  rotation:
+    - 0
+    - 0
+    - 0
+basechange:
+  location:
+    - 0
+    - 0
+    - 0
+  rotation:
+    - 0
+    - 0
+    - 0
+additive:
+  location:
+    - 0
+    - 1
+    - 0
+  rotation:
+    - 0
+    - 0
+    - 0
+quant: 3

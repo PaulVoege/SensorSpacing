@@ -14,14 +14,33 @@ pip3 install numpy
 
 This will allow you to run python scripts as can be found in Myscripts and Carla_0.9.15/PythonAPI/examples
 
-Myscripts: "python gen_traffic.py -n 150 -w 70 --seconds 60"
-	Capable of screen recording, if the option is enabled
-	linux and windows require separate forms of directory specifications
 
-Carla_0.9.15/PythonAPI/examples: "python generate_traffic.py"
+• Generate Traffic
+in /media/labuser/Data/Myscripts$ "python gen_traffic.py -n 150 -w 70 --seconds 60"
+	Capable of screen recording, if the option is enabled
+	
+	In Carla_0.9.15/PythonAPI/examples: "python generate_traffic.py"
+• Generate Data
+  in /media/labuser/Data/Myscripts$ python replay_with_sensors.py -o <output folder> -cfg <config ini file> [-skip <x>]"
+   For example, $python replay_with_sensors.py -cfg /media/labuser/Data/Myscripts/configparams/T1_1.ini -o "T1_1" 
+            ▪ -o is output folder name
+            ▪ -skip 44 can be used to skip, for example, 44 spacing instances. Useful when the simulator crashes midway through.
+• Inference
+        ◦ /media/labuser/Data/HEAL$ 
+            ▪ python opencood/tools/inference.py --model_dir opencood/MyModel/HeterBaseline_opv2v_lidar_fcooper_2023_08_06_19_53_10/ --fusion_method intermediate --save_vis_interval 5 --test
+                • HeterBaseline_opv2v_lidar_attfuse_2023_08_06_19_58_00
+• Autoinference
+        ◦ /media/labuser/Data/Myscripts$
+            ▪ python autoinfer.py -fcooper -disco -attfuse -cobevt -test "output/T1_4"
+
+    • Gif-making
+        ◦ convert $(for ((a=0; a<995; a+=5)); do printf -- "-delay 30 bev_00%s.png " $a; done; ) result.gif
+        ◦ gifsicle --delay=15 --loop [5-8]00feb5.gif > anim.gif
 ==================================================
 Windows Notes
 ==================================================
+Linux and Windows require separate forms of directory specifications
+
 to launch unreal editor: 
 launch x64 native tools command prompt
 navigate to "E:\carla", then "make launch"

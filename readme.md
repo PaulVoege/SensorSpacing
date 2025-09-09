@@ -1,7 +1,7 @@
 This repository contains the implementation of "A Method for Evaluating the Effect of Infrastructure Sensor Spacing
 on Vehicle Detection Performance in Roadside Cooperative Sensing Networks"
 
-This repository contains:
+###This repository contains:
 
 -The traffic generation script
 
@@ -15,7 +15,7 @@ This repository contains:
 
 
 
-
+##Environment
 The following commands create a conda environment that handles the installation requirements that the requirements.txt won't handle.
 
 conda create -n \<your environment name\> python=3.7

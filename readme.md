@@ -1,6 +1,6 @@
 # A Method for Evaluating the Effect of Infrastructure Sensor Spacing on Vehicle Detection Performance in Roadside Cooperative Sensing Networks
 
-###Abstract
+### Abstract
 While detector models and onboard sensors of self-driving cars become increasingly capable, a
 vehicle’s perspective remains inherently limited: large vehicles, buildings, foliage, and the like can
 cause unpredictable occlusion-based gaps in perception. Where vehicle-based sensors are limited
@@ -31,11 +31,11 @@ on Vehicle Detection Performance in Roadside Cooperative Sensing Networks"
 
 ### This repository contains:
 
--The traffic generation script
+-The traffic generation script `gen_traffic.py`
 
--The incrementally-spaced roadside data generation script
+-The incrementally-spaced roadside data generation script `replay_with_sensors.py`
 
--The detection script, and associated 
+-The detection script's (`opencood/tools/inference.py`) associated automation script `autoinfer.py`
 
 -Input and Output data for each placement
 

@@ -23,13 +23,13 @@ conda activate <your environment name>
 pip3 install carla
 pip3 install numpy
 ```
-This will allow you to run python scripts as can be found in Myscripts and Carla_0.9.15/PythonAPI/examples
+This will allow you to run python scripts as can be found in DataGenerator and Carla_0.9.15/PythonAPI/examples
 
 To launch the CARLA simulator, run "Link to CarlaUE4-Linux-Shipping" in Carla_0.9.15 folder.
 
 ## Generate Traffic
 
-In the Data Generator folder:
+In the DataGenerator folder:
 ```
 python gen_traffic.py [-n <#vehicles>] [-w <#walkers>] [--seconds <runtime in seconds>]
 ```
@@ -42,15 +42,15 @@ python gen_traffic.py -n 150 -w 70 --seconds 60
 - Capable of screen recording, if the option is enabled
 
 ## Generating Cooperative Roadside Data
-In the Data Generator folder:
+In the DataGenerator folder:
 ```
-python replay_with_sensors.py  -cfg \<config ini file\> [-skip <x>] -o "\<output folder\>"
+python replay_with_sensors.py  -cfg <config ini file> [-skip <x>] -o "<output folder>"
 ```
 For example, 
 ```
-python replay_with_sensors.py -cfg /media/labuser/Data/Myscripts/configparams/T1_1.ini -o "T1_1"
+python replay_with_sensors.py -cfg /media/labuser/Data/DataGenerator/configparams/T1_1.ini -o "T1_1"
 ``` 
-- o is output folder name      
+- -o denotes the output folder directory within       
 - skip 44 can be used to skip, for example, 44 spacing instances. Useful when the simulator crashes midway through.
         
 ## Inference
@@ -65,7 +65,9 @@ For example:
 python opencood/tools/inference.py --model_dir opencood/MyModel/HeterBaseline_opv2v_lidar_fcooper_2023_08_06_19_53_10/ --fusion_method intermediate --save_vis_interval 5 --test "output/T1_1"
 ```
 ### Autoinference
-In the Data Generator folder:
+It was inefficient to manually use the inference script for each detector on all 1610 spacing instances, so the process was automated using the autoinfer.py script.
+This runs from the DataGenerator folder, and consumes an entire placement, producing an inference measurement (mAP at 0.3, 0.5, and 0.7) for each spacing on each of the four detectors used.
+In the DataGenerator folder:
 ```
 python autoinfer.py [-fcooper] [-disco] [-attfuse] [-cobevt] -test "\<directory\>"
 ```

@@ -42,7 +42,7 @@ To launch the CARLA simulator, run "Link to CarlaUE4-Linux-Shipping" in Carla_0.
         
         -Capable of screen recording, if the option is enabled
 
-## Generate Data
+## Generating Cooperative Roadside Data
 
 /media/labuser/Data/Myscripts$ python replay_with_sensors.py  -cfg \<config ini file\> [-skip <x>] -o "\<output folder\>"
 
@@ -53,11 +53,16 @@ To launch the CARLA simulator, run "Link to CarlaUE4-Linux-Shipping" in Carla_0.
         -skip 44 can be used to skip, for example, 44 spacing instances. Useful when the simulator crashes midway through.
         
 ## Inference
+The following command will run a single spacing instance through a specified detector model, and display the mAP performance for each threshold.
 
-media/labuser/Data/HEAL$ python opencood/tools/inference.py --model_dir <directory of detector model> --fusion_method \<intermediate\> [--save_vis_interval \<interval\>] --test \<dir\>
-
-    For example: /media/labuser/Data/HEAL$ python opencood/tools/inference.py --model_dir opencood/MyModel/HeterBaseline_opv2v_lidar_fcooper_2023_08_06_19_53_10/ --fusion_method intermediate --save_vis_interval 5 --test "output/T1_1"
-
+In the HEAL folder: 
+'''
+python opencood/tools/inference.py --model_dir <directory of detector model> --fusion_method \<intermediate\> [--save_vis_interval \<interval\>] --test \<dir\>
+''' 
+For example:
+'''
+python opencood/tools/inference.py --model_dir opencood/MyModel/HeterBaseline_opv2v_lidar_fcooper_2023_08_06_19_53_10/ --fusion_method intermediate --save_vis_interval 5 --test "output/T1_1"
+'''
 ### Autoinference
 
 /media/labuser/Data/Myscripts$ python autoinfer.py [-fcooper] [-disco] [-attfuse] [-cobevt] -test "\<directory\>"

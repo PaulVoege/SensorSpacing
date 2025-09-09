@@ -39,7 +39,7 @@ on Vehicle Detection Performance in Roadside Cooperative Sensing Networks"
 
 -Input and Output data for each placement, located in `DataGenerator/configparams` and `DataGenerator/output`, respectively.
 
--The detector models used (HEAL's pretrained models: F-Cooper, AttFuse, CoBEVT, and DiscoNet), located in `HEAL/opencood/MyModel`
+-The detector models that were used in this work (HEAL's pretrained models: F-Cooper, AttFuse, CoBEVT, and DiscoNet), located in `HEAL/opencood/MyModel`
 
 
 

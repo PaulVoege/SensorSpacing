@@ -18,9 +18,9 @@ This repository contains:
 
 The following commands create a conda environment that handles the installation requirements that the requirements.txt won't handle.
 
-conda create -n <your environment name> python=3.7
+conda create -n \<your environment name\> python=3.7
 
-conda activate <your environment name>
+conda activate \<your environment name\>
 
 pip3 install carla
 
@@ -32,7 +32,7 @@ To launch the CARLA simulator, run "Link to CarlaUE4-Linux-Shipping" in Carla_0.
 
 ## Generate Traffic
 
-/media/labuser/Data/Myscripts$ "python gen_traffic.py [-n <#vehicles>] [-w <#walkers>] [--seconds <runtime in seconds>]"
+/media/labuser/Data/Myscripts$ "python gen_traffic.py [-n \<#vehicles\>] [-w \<#walkers\>] [--seconds \<runtime in seconds\>]"
 
     for example, $python gen_traffic.py -n 150 -w 70 --seconds 60
     
@@ -44,7 +44,7 @@ To launch the CARLA simulator, run "Link to CarlaUE4-Linux-Shipping" in Carla_0.
 
 ## Generate Data
 
-/media/labuser/Data/Myscripts$ python replay_with_sensors.py  -cfg <config ini file> [-skip <x>] -o "<output folder>"
+/media/labuser/Data/Myscripts$ python replay_with_sensors.py  -cfg \<config ini file\> [-skip <x>] -o "\<output folder\>"
 
    For example, $python replay_with_sensors.py -cfg /media/labuser/Data/Myscripts/configparams/T1_1.ini -o "T1_1" 
    
@@ -54,7 +54,7 @@ To launch the CARLA simulator, run "Link to CarlaUE4-Linux-Shipping" in Carla_0.
         
 ## Inference
 
-media/labuser/Data/HEAL$ python opencood/tools/inference.py --model_dir <directory of detector model> --fusion_method \<intermediate\> [--save_vis_interval <interval>] --test \<dir\>
+media/labuser/Data/HEAL$ python opencood/tools/inference.py --model_dir <directory of detector model> --fusion_method \<intermediate\> [--save_vis_interval \<interval\>] --test \<dir\>
 
     For example: /media/labuser/Data/HEAL$ python opencood/tools/inference.py --model_dir opencood/MyModel/HeterBaseline_opv2v_lidar_fcooper_2023_08_06_19_53_10/ --fusion_method intermediate --save_vis_interval 5 --test "output/T1_1"
 

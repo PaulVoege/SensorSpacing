@@ -56,14 +56,13 @@ To launch the CARLA simulator, run "Link to CarlaUE4-Linux-Shipping" in Carla_0.
 The following command will run a single spacing instance through a specified detector model, and display the mAP performance for each threshold.
 
 In the HEAL folder: 
-'''
+```
 python opencood/tools/inference.py --model_dir <directory of detector model> --fusion_method \<intermediate\> [--save_vis_interval \<interval\>] --test \<dir\>
-''' 
-
+``` 
 For example:
-'''
+```
 python opencood/tools/inference.py --model_dir opencood/MyModel/HeterBaseline_opv2v_lidar_fcooper_2023_08_06_19_53_10/ --fusion_method intermediate --save_vis_interval 5 --test "output/T1_1"
-'''
+```
 ### Autoinference
 
 /media/labuser/Data/Myscripts$ python autoinfer.py [-fcooper] [-disco] [-attfuse] [-cobevt] -test "\<directory\>"

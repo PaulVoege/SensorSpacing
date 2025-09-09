@@ -59,6 +59,7 @@ In the HEAL folder:
 '''
 python opencood/tools/inference.py --model_dir <directory of detector model> --fusion_method \<intermediate\> [--save_vis_interval \<interval\>] --test \<dir\>
 ''' 
+
 For example:
 '''
 python opencood/tools/inference.py --model_dir opencood/MyModel/HeterBaseline_opv2v_lidar_fcooper_2023_08_06_19_53_10/ --fusion_method intermediate --save_vis_interval 5 --test "output/T1_1"

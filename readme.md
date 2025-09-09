@@ -30,7 +30,7 @@ This will allow you to run python scripts as can be found in Myscripts and Carla
 
 To launch the CARLA simulator, run "Link to CarlaUE4-Linux-Shipping" in Carla_0.9.15 folder.
 
--Generate Traffic
+- Generate Traffic
 
 /media/labuser/Data/Myscripts$ "python gen_traffic.py [-n <#vehicles>] [-w <#walkers>] [--seconds <runtime in seconds>]"
 

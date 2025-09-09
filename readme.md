@@ -54,18 +54,19 @@ To launch the CARLA simulator, run "Link to CarlaUE4-Linux-Shipping" in Carla_0.
         
 ## Inference
 
-media/labuser/Data/HEAL$ python opencood/tools/inference.py --model_dir <directory of detector model> --fusion_method <intermediate> [--save_vis_interval <interval>] --test <dir>
+media/labuser/Data/HEAL$ python opencood/tools/inference.py --model_dir <directory of detector model> --fusion_method \<intermediate\> [--save_vis_interval <interval>] --test \<dir\>
 
     For example: /media/labuser/Data/HEAL$ python opencood/tools/inference.py --model_dir opencood/MyModel/HeterBaseline_opv2v_lidar_fcooper_2023_08_06_19_53_10/ --fusion_method intermediate --save_vis_interval 5 --test "output/T1_1"
 
 ### Autoinference
 
-/media/labuser/Data/Myscripts$ python autoinfer.py [-fcooper] [-disco] [-attfuse] [-cobevt] -test "<directory>"
+/media/labuser/Data/Myscripts$ python autoinfer.py [-fcooper] [-disco] [-attfuse] [-cobevt] -test "\<directory\>"
 
 /media/labuser/Data/Myscripts$ python autoinfer.py -fcooper -disco -attfuse -cobevt -test "output/T1_4"
         
         
-- Gif-making
+### Gif-making
+Within the detector model folder (HEAL/opencood/MyModel/\<detector\>), the detector
 
 convert $(for ((a=0; a<995; a+=5)); do printf -- "-delay 30 bev_00%s.png " $a; done; ) result.gif
 

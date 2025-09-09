@@ -1,5 +1,31 @@
 # A Method for Evaluating the Effect of Infrastructure Sensor Spacing on Vehicle Detection Performance in Roadside Cooperative Sensing Networks
 
+###Abstract
+While detector models and onboard sensors of self-driving cars become increasingly capable, a
+vehicle’s perspective remains inherently limited: large vehicles, buildings, foliage, and the like can
+cause unpredictable occlusion-based gaps in perception. Where vehicle-based sensors are limited
+to approximately ground level, infrastructure-based sensors can be placed higher above ground,
+providing reliable coverage of potentially occluded areas. While clear that roadside cooperation
+has potential to drastically improve vehicle detection performance, it is not currently clear how
+densely roadside sensors should be placed to accomplish this efficiently.
+
+This thesis investigates the effect of roadside sensor spacing on detection performance in a
+cooperative detection network, making two primary contributions. First, this work presents a
+method for generating, under identical traffic behaviour, multiple sets of cooperative roadside
+Lidar and RGB data with incrementally increased roadside sensor spacing. Second, this work uses
+the HEAL framework to evaluate the relationship between sensor spacing and detection
+performance for 23 placements across 6 of CARLA’s Towns.
+
+For each placement, the cooperative performance of 3 Lidar sensors across 70 one-meter
+spacing increments is recorded at three thresholds for each of four pretrained detector models
+provided by HEAL, resulting in 276 separate 70-point curves, each relating detection performance
+to spacing.
+
+An approximately proportional relationship between sensor spacing and detection
+performance is identified for sensor spacings up to at least 70m. It is found that cooperative
+roadside Lidar sensors can be expected to see an average improvement in detection performance
+of 1.544 percent per meter of sensor spacing.
+
 This repository contains the implementation of "A Method for Evaluating the Effect of Infrastructure Sensor Spacing
 on Vehicle Detection Performance in Roadside Cooperative Sensing Networks"
 

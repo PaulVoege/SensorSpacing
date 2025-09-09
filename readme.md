@@ -1,3 +1,5 @@
+# A Method for Evaluating the Effect of Infrastructure Sensor Spacing on Vehicle Detection Performance in Roadside Cooperative Sensing Networks
+
 This repository contains the implementation of "A Method for Evaluating the Effect of Infrastructure Sensor Spacing
 on Vehicle Detection Performance in Roadside Cooperative Sensing Networks"
 

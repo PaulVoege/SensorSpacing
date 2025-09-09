@@ -37,14 +37,14 @@ on Vehicle Detection Performance in Roadside Cooperative Sensing Networks"
 
 -The detection script's (`opencood/tools/inference.py`) associated automation script `autoinfer.py`
 
--Input and Output data for each placement, located in `DataGenerator/configparams` and `DataGenerator/output, respectively.`
+-Input and Output data for each placement, located in `DataGenerator/configparams` and `DataGenerator/output`, respectively.
 
 -The detector models used (HEAL's pretrained models: F-Cooper, AttFuse, CoBEVT, and DiscoNet), located in `HEAL/opencood/MyModel`
 
 
 
 ## Environment
-The following commands create a conda environment that handles the installation requirements that the requirements.txt won't handle.
+The following commands create a conda environment for the CARLA-based scripts, and handles the installation requirements that the requirements.txt won't handle.
 ```
 conda create -n <your environment name> python=3.7
 conda activate <your environment name>

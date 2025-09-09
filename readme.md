@@ -18,12 +18,9 @@ on Vehicle Detection Performance in Roadside Cooperative Sensing Networks"
 ## Environment
 The following commands create a conda environment that handles the installation requirements that the requirements.txt won't handle.
 ```
-conda create -n \<your environment name\> python=3.7
-
-conda activate \<your environment name\>
-
+conda create -n <your environment name> python=3.7
+conda activate <your environment name>
 pip3 install carla
-
 pip3 install numpy
 ```
 This will allow you to run python scripts as can be found in Myscripts and Carla_0.9.15/PythonAPI/examples
@@ -32,17 +29,20 @@ To launch the CARLA simulator, run "Link to CarlaUE4-Linux-Shipping" in Carla_0.
 
 ## Generate Traffic
 
-/media/labuser/Data/Myscripts$ "python gen_traffic.py [-n \<#vehicles\>] [-w \<#walkers\>] [--seconds \<runtime in seconds\>]"
-
-    for example, $python gen_traffic.py -n 150 -w 70 --seconds 60
-    
-        -defaults to 30 vehicles and 10 walkers unless otherwise specified
-        
-        -Map is hardcoded in the .py file
-        
-        -Capable of screen recording, if the option is enabled
+In the Data Generator folder:
+```
+python gen_traffic.py [-n <#vehicles>] [-w <#walkers>] [--seconds <runtime in seconds>]
+```
+For example
+```
+python gen_traffic.py -n 150 -w 70 --seconds 60
+```
+- defaults to 30 vehicles and 10 walkers unless otherwise specified
+- Map is hardcoded in the .py file
+- Capable of screen recording, if the option is enabled
 
 ## Generating Cooperative Roadside Data
+In the Data Generator folder:
 ```
 python replay_with_sensors.py  -cfg \<config ini file\> [-skip <x>] -o "\<output folder\>"
 ```
@@ -50,8 +50,8 @@ For example,
 ```
 python replay_with_sensors.py -cfg /media/labuser/Data/Myscripts/configparams/T1_1.ini -o "T1_1"
 ``` 
--o is output folder name      
--skip 44 can be used to skip, for example, 44 spacing instances. Useful when the simulator crashes midway through.
+- o is output folder name      
+- skip 44 can be used to skip, for example, 44 spacing instances. Useful when the simulator crashes midway through.
         
 ## Inference
 The following command will run a single spacing instance through a specified detector model, and display the mAP performance for each threshold.

@@ -31,15 +31,15 @@ on Vehicle Detection Performance in Roadside Cooperative Sensing Networks"
 
 ### This repository contains:
 
--The traffic generation script `gen_traffic.py`
+- The traffic generation script `gen_traffic.py`
 
--The incrementally-spaced roadside data generation script `replay_with_sensors.py`
+- The incrementally-spaced roadside data generation script `replay_with_sensors.py`
 
--The detection script's (`opencood/tools/inference.py`) associated automation script `autoinfer.py`
+- The detection script's (`opencood/tools/inference.py`) associated automation script `autoinfer.py`
 
--Input and Output data for each placement, located in `DataGenerator/configparams` and `DataGenerator/output`, respectively.
+- Input and Output data for each placement, located in `DataGenerator/configparams` and `DataGenerator/output`, respectively.
 
--The detector models that were used in this work (HEAL's pretrained models: F-Cooper, AttFuse, CoBEVT, and DiscoNet), located in `HEAL/opencood/MyModel`
+- The detector models that were used in this work (HEAL's pretrained models: F-Cooper, AttFuse, CoBEVT, and DiscoNet), located in `HEAL/opencood/MyModel`
 
 
 

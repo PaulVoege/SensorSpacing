@@ -17,7 +17,7 @@ on Vehicle Detection Performance in Roadside Cooperative Sensing Networks"
 
 ## Environment
 The following commands create a conda environment that handles the installation requirements that the requirements.txt won't handle.
-
+```
 conda create -n \<your environment name\> python=3.7
 
 conda activate \<your environment name\>
@@ -25,7 +25,7 @@ conda activate \<your environment name\>
 pip3 install carla
 
 pip3 install numpy
-
+```
 This will allow you to run python scripts as can be found in Myscripts and Carla_0.9.15/PythonAPI/examples
 
 To launch the CARLA simulator, run "Link to CarlaUE4-Linux-Shipping" in Carla_0.9.15 folder.

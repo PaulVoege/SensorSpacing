@@ -37,9 +37,9 @@ on Vehicle Detection Performance in Roadside Cooperative Sensing Networks"
 
 -The detection script's (`opencood/tools/inference.py`) associated automation script `autoinfer.py`
 
--Input and Output data for each placement
+-Input and Output data for each placement, located in `DataGenerator/configparams` and `DataGenerator/output, respectively.`
 
--The detector models used
+-The detector models used (HEAL's pretrained models: F-Cooper, AttFuse, CoBEVT, and DiscoNet), located in `HEAL/opencood/MyModel`
 
 
 
